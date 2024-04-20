@@ -38,20 +38,20 @@ if (fs.existsSync(file_path)) {
 //   }
 // });
 
-// //create folder
-// fs.mkdir("./new_folder", (err) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("folder created");
-//   }
-// });
+//create folder
+fs.mkdir("./new_folder", (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("folder created");
+  }
+});
 
-// //delete folder
-// fs.rmdir("./new_folder", (err) => {
-//   if (err) {
-//     console.log(err);
-//   } else {
-//     console.log("folder deleted");
-//   }
-// });
+//delete folder
+fs.rmdir("./new_folder", (err) => {
+  if (err) {
+    console.log(err);
+  } else {
+    console.log("folder deleted");
+  }
+});
