@@ -1,0 +1,1 @@
+-instead of giving the whole large file from server to browser, pass it chunk by chunk
