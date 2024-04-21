@@ -2,7 +2,7 @@ const fs = require("fs");
 
 //read and write file with buffer - chunk by chunk
 const readStream = fs.createReadStream("./docs/large.txt");
-const writeStream = fs.createWriteStream("./docs/large_write.txt");
+const writeStream = fs.createWriteStream("./docs/large_write.txt"); //if the path exits, it will update, otherwise, it will create a new file
 
 //pipe
 // readStream.on("data", (data) => {
