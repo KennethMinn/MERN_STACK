@@ -1,11 +1,17 @@
 const http = require("http");
+const fs = require("fs");
 
 //create server
 const server = http.createServer((req, res) => {
   res.setHeader("Content-Type", "text/html");
 
-  res.write("<h1>Hello world<h1/>");
-  res.end();
+  //rendering html file to client
+  fs.readFile("./views/home.html", (err, data) => {
+    if (err) {
+      console.log(err);
+    } else res.write(data);
+    res.end();
+  });
 });
 
 //listen to client at localhost port 3000
