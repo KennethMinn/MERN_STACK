@@ -6,7 +6,7 @@ app.get("/", function (req, res) {
 });
 
 app.get("/about", function (req, res) {
-  res.sendFile("./views/about.html", { root: __dirname });
+  res.sendFile("./views/about.html", { root: __dirname }); //rendering html file
 });
 
 app.listen(3000, () => {
