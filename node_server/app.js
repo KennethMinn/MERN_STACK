@@ -5,6 +5,11 @@ const app = express();
 app.set("views", "./views"); //folder
 app.set("view engine", "ejs"); //file
 
+app.use((req, res, next) => {
+  console.log("first middleware is running");
+  next(); //will run the codes below
+});
+
 app.get("/", function (req, res) {
   res.render("home"); //no need extension(ejs) of the file
 });
@@ -19,7 +24,7 @@ app.get("/about-us", function (req, res) {
   res.render("about");
 });
 
-//404page - node reaches this line only if above routes are not match
+//404page - node reaches this line only if above routes are not match or function didn't respond
 app.use((req, res) => {
   res.status(404).render("404"); //short hand of two lines
 });
