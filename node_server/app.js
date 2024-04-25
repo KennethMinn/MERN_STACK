@@ -1,14 +1,13 @@
 const express = require("express"); //npm install express
+let morgan = require("morgan"); //npm install morgan - middleware package
+
 const app = express();
 
 //view engine - npm install ejs
 app.set("views", "./views"); //folder
 app.set("view engine", "ejs"); //file
 
-app.use((req, res, next) => {
-  console.log("first middleware is running");
-  next(); //will run the codes below
-});
+app.use(morgan("dev")); //logging req.method and req.originalUrl
 
 app.get("/", function (req, res) {
   res.render("home"); //no need extension(ejs) of the file
