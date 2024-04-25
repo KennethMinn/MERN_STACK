@@ -8,6 +8,7 @@ app.set("views", "./views"); //folder
 app.set("view engine", "ejs"); //file
 
 app.use(morgan("dev")); //logging req.method and req.originalUrl
+app.use(express.static("public")); //telling static files are inside public folder - can navigate to '.nyi.png'
 
 app.get("/", function (req, res) {
   res.render("home"); //no need extension(ejs) of the file
