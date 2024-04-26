@@ -1,1 +1,7 @@
 -Server always need to listen to the client
+
+#Mongo Schema 
+
+-Schema -> title-string, desc-string
+
+-Model -> created from schema -> save, CRUD
