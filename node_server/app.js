@@ -51,6 +51,7 @@ app.get("/", async function (req, res) {
   res.json(blogs);
 });
 
+//get a single blog
 app.get("/single-blog", async (req, res) => {
   const blog = await Blog.findById("662bc6642ccd5b138a42484c");
   res.json(blog);
