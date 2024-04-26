@@ -43,8 +43,17 @@ app.get("/add-blog", async (req, res) => {
   res.send("blog created");
 });
 
-app.get("/", function (req, res) {
-  res.render("home"); //no need extension(ejs) of the file
+app.get("/", async function (req, res) {
+  //res.render("home"); //no need extension(ejs) of the file
+
+  //get all blogs & sorting(desc)
+  const blogs = await Blog.find().sort({ createdAt: -1 });
+  res.json(blogs);
+});
+
+app.get("/single-blog", async (req, res) => {
+  const blog = await Blog.findById("662bc6642ccd5b138a42484c");
+  res.json(blog);
 });
 
 //rendering file
