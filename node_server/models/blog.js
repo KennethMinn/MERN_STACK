@@ -22,6 +22,6 @@ const BlogSchema = mongoose.Schema(
 );
 
 //model - blogs collection -> Blog (naming convention)
-const Blog = mongoose.model("Blog", BlogSchema);
+const Blog = mongoose.model("Blog", BlogSchema); // will do the CRUD and save
 
 module.exports = Blog;

@@ -1,8 +1,8 @@
 const express = require("express"); //npm install express
 let morgan = require("morgan"); //npm install morgan - middleware package
-
 const mongoose = require("mongoose"); //npm install mongoose
-const Blog = require("./models/blog");
+const blogRoutes = require("./routes/blog_routes");
+
 const app = express();
 
 app.use(express.urlencoded({ extended: true })); //parse the data coming from form
@@ -30,35 +30,15 @@ app.set("views", "./views"); //folder
 app.set("view engine", "ejs"); //file
 
 app.use(morgan("dev")); //logging req.method and req.originalUrl
-app.use(express.static("public")); //telling static files are inside public folder - can navigate to '.nyi.png'
+app.use(express.static("public")); //telling static files are inside public folder - can navigate to '/.nyi.png'
 
-//create a blog
-app.get("/add-blog", async (req, res) => {
-  let blog = new Blog({
-    title: "blog title 1",
-    intro: "blog intro 1",
-    body: "blog body 1",
-  });
-
-  //save in atlas
-  await blog.save(); //below lines will wait this line
-  res.send("blog created");
+//redirect
+app.get("/", (req, res) => {
+  res.redirect("/blogs");
 });
 
-app.get("/", async function (req, res) {
-  //res.render("home"); //no need extension(ejs) of the file
-
-  //get all blogs & sorting(desc)
-  const blogs = await Blog.find().sort({ createdAt: -1 });
-  res.json(blogs);
-});
-
-//get a single blog - dynamic
-app.get("/blogs/:id", async (req, res) => {
-  console.log(req.params); //{id : "662bc6642ccd5b138a42484c"}
-  const blog = await Blog.findById(req.params.id);
-  res.json(blog);
-});
+//caliing blog routes - "/blogs" is a prefix
+app.use("/blogs", blogRoutes);
 
 //rendering file
 app.get("/about", function (req, res) {
@@ -67,7 +47,7 @@ app.get("/about", function (req, res) {
 
 //redirect url
 app.get("/about-us", function (req, res) {
-  res.render("about");
+  res.redirect("about");
 });
 
 //404page - node reaches this line only if above routes are not match or function didn't respond
