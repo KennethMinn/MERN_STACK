@@ -5,6 +5,8 @@ const mongoose = require("mongoose"); //npm install mongoose
 const Blog = require("./models/blog");
 const app = express();
 
+app.use(express.urlencoded({ extended: true })); //parse the data coming from form
+
 //db url
 let mongoUrl =
   "mongodb+srv://mtk:mtk123@cluster0.yilh14y.mongodb.net/?retryWrites=true&w=majority&appName=Cluster0";
@@ -51,9 +53,10 @@ app.get("/", async function (req, res) {
   res.json(blogs);
 });
 
-//get a single blog
-app.get("/single-blog", async (req, res) => {
-  const blog = await Blog.findById("662bc6642ccd5b138a42484c");
+//get a single blog - dynamic
+app.get("/blogs/:id", async (req, res) => {
+  console.log(req.params); //{id : "662bc6642ccd5b138a42484c"}
+  const blog = await Blog.findById(req.params.id);
   res.json(blog);
 });
 
