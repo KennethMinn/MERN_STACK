@@ -37,7 +37,7 @@ app.get("/", (req, res) => {
   res.redirect("/blogs");
 });
 
-//caliing blog routes - "/blogs" is a prefix
+//calling blog routes - "/blogs" is a prefix
 app.use("/blogs", blogRoutes);
 
 //rendering file

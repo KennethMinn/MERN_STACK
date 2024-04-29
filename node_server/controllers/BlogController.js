@@ -21,7 +21,7 @@ const BlogController = {
     await blog.save(); //below lines will wait this line
     res.send("blog created");
   },
-  destory: async (req, res) => {
+  destroy: async (req, res) => {
     await Blog.findByIdAndDelete(req.params.id);
     res.redirect("/blogs");
   },
