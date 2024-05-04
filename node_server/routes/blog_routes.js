@@ -12,6 +12,6 @@ router.get("/:id", BlogController.show);
 router.get("/add-blog", BlogController.store);
 
 //delete a single blog - dynamic
-router.get("/:id/delete", BlogController.destory);
+router.get("/:id/delete", BlogController.destroy);
 
 module.exports = router;
